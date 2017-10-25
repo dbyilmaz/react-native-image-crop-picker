@@ -597,7 +597,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
 
     private void imagePickerResult(Activity activity, final int requestCode, final int resultCode, final Intent data) {
         if (resultCode == Activity.RESULT_CANCELED) {
-            resultCollector.notifyProblem(E_PICKER_CANCELLED_KEY, E_PICKER_CANCELLED_MSG);
+            return;
         } else if (resultCode == Activity.RESULT_OK) {
             if (multiple) {
                 ClipData clipData = data.getClipData();
@@ -640,7 +640,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
 
     private void cameraPickerResult(Activity activity, final int requestCode, final int resultCode, final Intent data) {
         if (resultCode == Activity.RESULT_CANCELED) {
-            resultCollector.notifyProblem(E_PICKER_CANCELLED_KEY, E_PICKER_CANCELLED_MSG);
+            return;
         } else if (resultCode == Activity.RESULT_OK) {
             Uri uri = mCameraCaptureURI;
 
@@ -678,7 +678,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
                 resultCollector.notifyProblem(E_NO_IMAGE_DATA_FOUND, "Cannot find image data");
             }
         } else {
-            resultCollector.notifyProblem(E_PICKER_CANCELLED_KEY, E_PICKER_CANCELLED_MSG);
+            return;
         }
     }
 
